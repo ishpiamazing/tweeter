@@ -1,0 +1,19 @@
+
+#button {
+background-color:#4056A1;
+color : #ffffff;
+font-family: "Bungee";
+}
+
+#counter {
+  float : right;
+ 
+}
+
+#form textarea {
+  border: none;
+  resize: none;
+  border-bottom: 2px black solid;
+  background-color:  #f4f1ec;
+  width: 100%;
+}
