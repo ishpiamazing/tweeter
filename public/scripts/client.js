@@ -67,33 +67,49 @@ const renderTweets = function(tweets) {
 
 
 $(document).ready(()=> {
+  
   //event listener
   $("#form").on("submit", function(event) {
     //prevents to change the page 
     event.preventDefault();
   //.serialize() converts data into query string
     const data = $(this).serialize();
+  
+    //data validation before sending it to server
+    const newData = data.slice(5);
+    if (newData.length > 140) {
+      $('#error-message').text("The message should be not be greater than 140 characters");
+    } else if (newData === "" || newData === null) {
+      $('#error-message').text("Message cannot be empty!");
+    } else {
     //ajax POST request
     $.ajax({url: "/tweets/", 
-            method: "POST", data,
+            method: "POST", 
+            data : data,
             success : function (data){
             console.log("ajax request successful");
             //renderTweets(data);
             loadTweets(data);
-          }})
+            },
+            error: function () {}
+          });
+          $('#error-message').text(""); 
+        }
     //for clearing the entered text
-    this.reset();  
- 
-  })
-})
-
-
+   this.reset();
+  });
+  
+ //GET method for new tweets 
 const loadTweets = function () {
   $.ajax({
     url : "/tweets",
     method : "GET",
     success : function(data) {
-      renderTweets(data);
-    }
-  })
-}
+    renderTweets(data);
+    },
+    error: function () {}
+  });
+};
+
+loadTweets();
+});
