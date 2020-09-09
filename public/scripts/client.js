@@ -33,9 +33,9 @@
 //The function takes in a tweet object and is responsible for returning a tweet <article> element containing the entire HTML structure of the tweet
 const createTweetElement = function(tweetData) {
 
-  //clear the container to read the recent tweet
-  $("#tweets-container").empty();
-  let $tweet =`<article>
+  // //clear the container to read the recent tweet
+  // $("#tweets-container").empty();
+  let tweet =`<article>
   <header class = "tweet-header">
     <img class="logo" src=${tweetData.user.avatars} />
     <h2 class="name">${tweetData.user.name}</h2>
@@ -49,19 +49,23 @@ const createTweetElement = function(tweetData) {
     <img class="emoticons" src="images/flag.svg"></img>
   </footer>
 </article>`;
-return $tweet;
+return tweet;
 }
 
 
 // The function takes in an array of tweet objects and then append each one to the #tweets-container
 const renderTweets = function(tweets) {
+ //clear the container to read the recent tweet
+  $("#tweets-container").empty();
+  
   // loops through tweets
-  for(let tweet of tweets) {
+  for(let i = (tweets.length -1); i >= 0; i--) {
+    
   // calls createTweetElement for each tweet
-    $tweet = createTweetElement(tweet);
+    let tweet = createTweetElement(tweets[i]);
   
   // takes return value and appends it to the tweets container
-  $('#tweets-container').append($tweet)
+  $('#tweets-container').append(tweet)
   }
 }
 
@@ -70,7 +74,8 @@ $(document).ready(()=> {
   
   //event listener
   $("#form").on("submit", function(event) {
-    //prevents to change the page 
+
+  //prevents to change the page 
     event.preventDefault();
   //.serialize() converts data into query string
     const data = $(this).serialize();
@@ -90,10 +95,13 @@ $(document).ready(()=> {
             console.log("ajax request successful");
             //renderTweets(data);
             loadTweets(data);
+            $('#error-message').text("");
+            $('#tweet-text').val("");
+            $('.counter').val('140');
             },
             error: function () {}
           });
-          $('#error-message').text(""); 
+          
         }
     //for clearing the entered text
    this.reset();
@@ -110,6 +118,7 @@ const loadTweets = function () {
     error: function () {}
   });
 };
-
+//app shows the tweets
 loadTweets();
 });
+
