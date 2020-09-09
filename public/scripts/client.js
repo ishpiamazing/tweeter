@@ -4,6 +4,7 @@
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
 
+// Fake data taken from initial-tweets.json
 const tweetData =[
   {
     "user": {
@@ -29,6 +30,7 @@ const tweetData =[
   }
 ]
 
+//The function takes in a tweet object and is responsible for returning a tweet <article> element containing the entire HTML structure of the tweet
 const createTweetElement = function(tweetData) {
   let $tweet =`<article>
   <header class = "tweet-header">
@@ -47,6 +49,8 @@ const createTweetElement = function(tweetData) {
 return $tweet;
 }
 
+
+// The function takes in an array of tweet objects and then append each one to the #tweets-container
 const renderTweets = function(tweets) {
   // loops through tweets
   for(let tweet of tweets) {
@@ -58,6 +62,21 @@ const renderTweets = function(tweets) {
   }
 }
 
+
 $(document).ready(()=> {
-  renderTweets(tweetData);
+  //event listener
+  $("#form").on("submit", function(event) {
+    //prevents to change the page 
+    event.preventDefault();
+  //.serialize() converts data into query string
+    const data = $(this).serialize();
+    //ajax POST request
+    $.ajax({url: "/tweets/", 
+            method: "POST", data,
+            success : function (data){
+            console.log("ajax request successful");
+            renderTweets(data);
+          }})
+ 
+  })
 })
