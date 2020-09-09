@@ -1,5 +1,5 @@
 $(document).ready(function(){
-  $('#tweet-text').on('keyup keypress', function () {
+  $('#tweet-text').on('keyup', function () {
     // Traverse the DOM up and down to form to find the closest element with .counter class set
     let counter = $(this).closest("form").find(".counter");
     // Set Maximum Length of the tweet

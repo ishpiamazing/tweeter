@@ -22,7 +22,8 @@ font-family: "Bungee";
 }
 
 #counter {
-  float : right;
+  display: flex;
+  justify-content: space-between;
   font-weight: bold;
  
 }
@@ -42,7 +43,7 @@ font-family: "Bungee";
 
 }
 
-#tweet-header {
+.tweet-header {
   display:flex;
   flex-direction: row;
   background-color:  #f4f1ec;
@@ -53,7 +54,7 @@ font-family: "Bungee";
 
 }
 
-#tweet-header .logo {
+.tweet-header .logo {
   order : 1;
   margin-left: 20px;
   margin-top: 20px;;
@@ -108,9 +109,6 @@ hr {
 }
 
 .emoticons {
-  /* border: 0px solid #ddd; */
-  /* border-radius: 2px; */
-  /* padding: 2px; */
   width: 20px;
   float:right;
 
