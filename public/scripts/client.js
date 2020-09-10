@@ -30,6 +30,12 @@
 //   }
 // ]
 
+const escape =  function(str) {
+  let div = document.createElement('div');
+  div.appendChild(document.createTextNode(str));
+  return div.innerHTML;
+}
+
 //The function takes in a tweet object and is responsible for returning a tweet <article> element containing the entire HTML structure of the tweet
 const createTweetElement = function(tweetData) {
 
@@ -41,7 +47,7 @@ const createTweetElement = function(tweetData) {
     <h2 class="name">${tweetData.user.name}</h2>
     <span class="style-name">${tweetData.user.handle}</span>
   </header>
-  <div>${tweetData.content.text}</div>
+  <div>${escape(tweetData.content.text)}</div>
   <hr/>
   <footer>${tweetData.created_at}
     <img class="emoticons" src="images/heart.svg"></img>
@@ -77,8 +83,10 @@ $(document).ready(()=> {
 
   //prevents to change the page 
     event.preventDefault();
-  //.serialize() converts data into query string
+  
+    //.serialize() converts data into query string
     const data = $(this).serialize();
+    
   
     //data validation before sending it to server
     const newData = data.slice(5);
