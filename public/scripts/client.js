@@ -77,26 +77,32 @@ const renderTweets = function(tweets) {
 
 
 $(document).ready(()=> {
-  
+
+//click event on textarea which will empty text area and remove error message
+$("#tweet-text").on("click", function (event) {
+  $('#error-message').slideUp('slow');
+});
+
   //event listener
   $("#form").on("submit", function(event) {
-
-  //prevents to change the page 
-    event.preventDefault();
-  
+    //prevents to change the page 
+    event.preventDefault() 
     //.serialize() converts data into query string
     const data = $(this).serialize();
     
   
     //data validation before sending it to server
     const newData = data.slice(5);
-    if (newData.length > 140) {
-      $('#error-message').text("The message should be not be greater than 140 characters");
+    if (newData.length > 140) {  
+      //Slide Down error if length is greater than 140
+      $('#error-message').html("The message should be not be greater than 140 characters").slideDown('slow');
     } else if (newData === "" || newData === null) {
-      $('#error-message').text("Message cannot be empty!");
+      //Slide Down error if message is empty or null
+      $('#error-message').html("Message cannot be empty!").slideDown('slow');
     } else {
-    //ajax POST request
-    $.ajax({url: "/tweets/", 
+      
+            //ajax POST request
+            $.ajax({url: "/tweets/", 
             method: "POST", 
             data : data,
             success : function (data){
@@ -112,7 +118,7 @@ $(document).ready(()=> {
           
         }
     //for clearing the entered text
-   this.reset();
+   //this.reset();
   });
   
  //GET method for new tweets 

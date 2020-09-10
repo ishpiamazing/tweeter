@@ -37,10 +37,19 @@ font-family: "Bungee";
 #tweets-container{
   display:flex;
   flex-direction: column;
-  background-color: #f4f1ec;
+  /* background-color: #f4f1ec; */
   border: 2px solid black;
   width: 100%;
 
+}
+
+.tweet-article {
+  border : 2px solid black;
+  width: inherit;
+  margin-bottom: 30px;
+  margin-top: 30px;
+  width: 100%;
+  
 }
 
 .tweet-header {
@@ -51,13 +60,14 @@ font-family: "Bungee";
   height: 50px;
   align-items: flex-start;
   justify-content: flex-start;
+  border-top: 2px solid black;
 
 }
 
 .tweet-header .logo {
   order : 1;
   margin-left: 20px;
-  margin-top: 20px;;
+  margin-top: 20px;
 }
 
 .name {
@@ -90,8 +100,9 @@ article > footer {
   height: 35px;
   padding: 10px;
   font-size: 0.75em;
-  float: left;
+  /* float: left; */
   margin-bottom: 20px;
+  border-bottom: 2px solid black;
   
 }
 #tweets-container :hover {
@@ -112,4 +123,9 @@ hr {
   width: 20px;
   float:right;
 
+}
+
+#error-message {
+  color: red;
+ 
 }
