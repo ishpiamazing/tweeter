@@ -15,20 +15,51 @@ html {
  */
 
 body {
-  padding-top: 120px; 
+  /* padding-top: 70px;  */
   color: #545149;
   background-color: #f4f1ec;
   font-size: 24px;
   font-family:'Source Sans Pro';
 }
+.new {
+  display: flex;
+  flex-direction: row;
+  
+}
+
 
 /*
  * Additional CSS can be defined below or in other CSS files, as per instructions
  */
- body .container {
+ .container {
   display: flex;
   width : 90%;
+  /* box-sizing: content-box; */
   justify-content: center;
   margin : auto;
+  margin-left: 100px;
+  margin-right: 50px;
   flex-wrap: wrap;
+  
  }
+
+ @media only screen and (max-width:1024px) {
+   .nav {
+     background-color: #b37700 !important;
+   }
+    .new {
+      flex-direction: column; 
+    }
+    
+     .new > header {
+      width: 100%;
+      margin: 0px;
+    }
+    .container {
+      margin: 0px;
+      margin-left: 50px;
+    }
+    
+
+  }
+     

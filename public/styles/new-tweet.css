@@ -38,17 +38,17 @@ font-family: "Bungee";
   display:flex;
   flex-direction: column;
   /* background-color: #f4f1ec; */
-  border: 2px solid black;
+  /* border: 2px solid black; */
   width: 100%;
-
 }
 
-.tweet-article {
+#tweets-container article {
   border : 2px solid black;
-  width: inherit;
-  margin-bottom: 30px;
+  /* width: inherit; */
+  /* margin-bottom: 30px; */
   margin-top: 30px;
-  width: 100%;
+  
+  /* width: 100%; */
   
 }
 
@@ -61,6 +61,7 @@ font-family: "Bungee";
   align-items: flex-start;
   justify-content: flex-start;
   border-top: 2px solid black;
+  /* border-right: 2px solid black; */
 
 }
 
@@ -101,7 +102,7 @@ article > footer {
   padding: 10px;
   font-size: 0.75em;
   /* float: left; */
-  margin-bottom: 20px;
+  /* margin-bottom: 20px; */
   border-bottom: 2px solid black;
   
 }
@@ -119,11 +120,19 @@ hr {
   background-color: #080808;
 }
 
+.emoticons :hover {
+  display : inline;
+  
+}
+
 .emoticons {
   width: 20px;
-  float:right;
+  display:none;
+  /* float:right; */
 
 }
+
+
 
 #error-message {
   color: red;

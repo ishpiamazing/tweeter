@@ -80,7 +80,7 @@ $(document).ready(()=> {
 
 //click event on textarea which will empty text area and remove error message
 $("#tweet-text").on("click", function (event) {
-  $('#error-message').slideUp('slow');
+$('#error-message').slideUp('slow');
 });
 
   //event listener
