@@ -15,7 +15,6 @@ html {
  */
 
 body {
-  /* padding-top: 70px;  */
   color: #545149;
   background-color: #f4f1ec;
   font-size: 24px;
@@ -34,7 +33,6 @@ body {
  .container {
   display: flex;
   width : 90%;
-  /* box-sizing: content-box; */
   justify-content: center;
   margin : auto;
   margin-left: 100px;
@@ -43,9 +41,10 @@ body {
   
  }
 
+ /*Responsive Design code*/
  @media only screen and (max-width:1024px) {
    .nav {
-     background-color: #b37700 !important;
+     background-color: #b37700 ;
    }
     .new {
       flex-direction: column; 
@@ -59,7 +58,5 @@ body {
       margin: 0px;
       margin-left: 50px;
     }
-    
-
   }
      

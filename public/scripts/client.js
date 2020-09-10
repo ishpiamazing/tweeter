@@ -4,32 +4,17 @@
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
 
-// Fake data taken from initial-tweets.json
-// const tweetData =[
-//   {
-//     "user": {
-//       "name": "Newton",
-//       "avatars": "https://i.imgur.com/73hZDYK.png"
-//       ,
-//       "handle": "@SirIsaac"
-//     },
-//     "content": {
-//       "text": "If I have seen further it is by standing on the shoulders of giants"
-//     },
-//     "created_at": 1461116232227
-//   },
-//   {
-//     "user": {
-//       "name": "Descartes",
-//       "avatars": "https://i.imgur.com/nlhLi3I.png",
-//       "handle": "@rd" },
-//     "content": {
-//       "text": "Je pense , donc je suis"
-//     },
-//     "created_at": 1461113959088
-//   }
-// ]
+//function to find out the number of days 
+const daysSince =  function(createdAt){
+  const oneDay = 24 * 60 * 60 * 1000; // hours*minutes*seconds*milliseconds
+  const dateCreated = new Date(0);
+  const currentDate = new Date();
+  dateCreated.setUTCMilliseconds(createdAt);
+  const diffDays = Math.round(Math.abs((currentDate - dateCreated) / oneDay));
+  return diffDays + " days ago";
+}
 
+//function to prevent cross-site scripting
 const escape =  function(str) {
   let div = document.createElement('div');
   div.appendChild(document.createTextNode(str));
@@ -39,8 +24,6 @@ const escape =  function(str) {
 //The function takes in a tweet object and is responsible for returning a tweet <article> element containing the entire HTML structure of the tweet
 const createTweetElement = function(tweetData) {
 
-  // //clear the container to read the recent tweet
-  // $("#tweets-container").empty();
   let tweet =`<article>
   <header class = "tweet-header">
     <img class="logo" src=${tweetData.user.avatars} />
@@ -49,7 +32,7 @@ const createTweetElement = function(tweetData) {
   </header>
   <div>${escape(tweetData.content.text)}</div>
   <hr/>
-  <footer>${tweetData.created_at}
+  <footer>${daysSince(tweetData.created_at)}
     <img class="emoticons" src="images/heart.svg"></img>
     <img class="emoticons" src="images/retweet.svg"></img>
     <img class="emoticons" src="images/flag.svg"></img>
@@ -90,7 +73,6 @@ $('#error-message').slideUp('slow');
     //.serialize() converts data into query string
     const data = $(this).serialize();
     
-  
     //data validation before sending it to server
     const newData = data.slice(5);
     if (newData.length > 140) {  
@@ -117,8 +99,6 @@ $('#error-message').slideUp('slow');
           });
           
         }
-    //for clearing the entered text
-   //this.reset();
   });
   
  //GET method for new tweets 
